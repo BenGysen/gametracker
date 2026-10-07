@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gametracker – Handleiding</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 140 140%22 width=%22140%22 height=%22140%22> <rect x=%220%22 y=%220%22 width=%22140%22 height=%22140%22 rx=%2232%22 fill=%22#1B3F74%22/> <g fill=%22none%22 stroke=%22#F4F8FD%22 stroke-width=%224%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22> <rect x=%2232%22 y=%2224%22 width=%2276%22 height=%22100%22 rx=%226%22/> <rect x=%2252%22 y=%2224%22 width=%2236%22 height=%2213%22/> <rect x=%2252%22 y=%22111%22 width=%2236%22 height=%2213%22/> <line x1=%2232%22 y1=%2274%22 x2=%2250%22 y2=%2274%22/> <line x1=%2290%22 y1=%2274%22 x2=%22108%22 y2=%2274%22/> <circle cx=%2270%22 cy=%2274%22 r=%2220%22/> <line x1=%2270%22 y1=%2288%22 x2=%2270%22 y2=%2292%22 stroke-width=%223%22/> <line x1=%2252%22 y1=%2274%22 x2=%2256%22 y2=%2274%22 stroke-width=%223%22/> </g> <rect x=%2262%22 y=%228%22 width=%2216%22 height=%2210%22 rx=%222%22 fill=%22#F4F8FD%22/> <rect x=%2266%22 y=%2216%22 width=%228%22 height=%228%22 fill=%22#F4F8FD%22/> <path d=%22M70 54 A20 20 0 0 1 90 74%22 fill=%22none%22 stroke=%22#5AAEFF%22 stroke-width=%224%22 stroke-linecap=%22round%22/> <line x1=%2270%22 y1=%2274%22 x2=%2282%22 y2=%2261%22 stroke=%22#5AAEFF%22 stroke-width=%225%22 stroke-linecap=%22round%22/> <circle cx=%2270%22 cy=%2274%22 r=%224%22 fill=%22#5AAEFF%22/> </svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EEF3F9;--surface:#FFFFFF;--surface-2:#DFE8F3;--ink:#0E1B2E;--ink-2:#4B5D75;--line:#C6D3E2;
+  --navy:#1B3F74;--navy-deep:#112A52;--chalk:#F4F8FD;--accent:#5AAEFF;--accent-ink:#05203F;--them:#7C8CA3;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1424;--surface:#121F36;--surface-2:#1A2C4A;--ink:#E9F0F9;--ink-2:#A3B3C9;--line:#27405F;--navy:#173664;--navy-deep:#0E2246;--chalk:#F1F6FC;
+  }
+}
+:root[data-theme="dark"]{--bg:#0A1424;--surface:#121F36;--surface-2:#1A2C4A;--ink:#E9F0F9;--ink-2:#A3B3C9;--line:#27405F;--navy:#173664;--navy-deep:#0E2246;--chalk:#F1F6FC;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Barlow",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55}
+h1,h2,h3{margin:0;line-height:1.15;font-weight:600}
+h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:clamp(40px,9vw,64px);letter-spacing:.005em}
+h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:30px;margin:0 0 14px;display:flex;align-items:center;gap:12px}
+h2 .n{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--navy);color:var(--chalk);font-size:19px;flex:none}
+h3{font-size:19px;margin:22px 0 8px;color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) h3{color:var(--accent)}}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 12px;padding-left:22px}
+li{margin-bottom:6px}
+a{color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) a{color:var(--accent)}}
+strong{font-weight:600}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px 60px}
+
+.hero{background:var(--navy);background-image:linear-gradient(to right,rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(180deg,var(--navy),var(--navy-deep));background-size:33.33% 100%,100% 100%;color:var(--chalk);padding:44px 0 36px;position:relative}
+.hero .wrap{padding-bottom:0}
+.hero p{color:rgba(255,255,255,.78);font-size:19px;max-width:560px;margin-top:10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:14px;color:var(--accent);margin-bottom:8px}
+.hero .meta{margin-top:18px;font-size:14px;color:rgba(255,255,255,.6)}
+
+nav.toc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:-22px 0 34px;position:relative}
+nav.toc strong{display:block;margin-bottom:8px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+nav.toc ol{columns:2;column-gap:24px;margin:0;padding-left:20px}
+nav.toc li{break-inside:avoid;margin-bottom:4px}
+nav.toc a{text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+@media (max-width:520px){nav.toc ol{columns:1}}
+
+section{margin-bottom:44px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:14px 0}
+.tip{border-left:4px solid var(--accent);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;padding:12px 16px;margin:14px 0}
+.tip strong{color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tip strong{color:var(--accent)}}
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px}
+.steps b{display:block;font-weight:600}
+.steps span{color:var(--ink-2)}
+
+.btn-demo{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:3px 11px;border-radius:9px;font-weight:600;font-size:14px;vertical-align:middle;white-space:nowrap}
+.b-us{background:var(--accent);color:var(--accent-ink)}
+.b-them{background:var(--them);color:#fff}
+.b-nav{background:var(--navy);color:var(--chalk)}
+.b-sec{background:var(--surface-2);color:var(--ink)}
+.b-chalk{background:var(--chalk);color:var(--navy-deep);border:1px solid var(--line)}
+.b-text{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.b-danger{border:1.5px solid #B5412F;color:#B5412F}
+kbd{font-family:inherit;font-weight:600;background:var(--surface-2);padding:1px 7px;border-radius:6px;font-size:15px}
+
+.table-wrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2);background:var(--surface-2);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;white-space:nowrap}
+
+.pitch{background:var(--navy-deep);border-radius:var(--radius);padding:14px 10px;color:var(--chalk);border:2px solid rgba(255,255,255,.3);position:relative;overflow:hidden;max-width:420px;margin:14px auto}
+.pitch::before{content:"";position:absolute;left:50%;top:50%;width:70px;height:70px;border:2px solid rgba(255,255,255,.2);border-radius:50%;transform:translate(-50%,-50%)}
+.pitch::after{content:"";position:absolute;left:50%;bottom:-2px;width:46%;height:20px;border:2px solid rgba(255,255,255,.2);border-bottom:0;transform:translateX(-50%)}
+.row{display:flex;justify-content:space-evenly;min-height:60px;align-items:center;position:relative;z-index:1}
+.pl{display:flex;flex-direction:column;align-items:center;font-size:11px;font-weight:600;letter-spacing:.04em;opacity:.95}
+.pl i{font-style:normal;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;margin:3px 0}
+.pitch-cap{text-align:center;font-size:14px;color:var(--ink-2);margin-top:-6px}
+
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 16px;margin-bottom:8px}
+.faq summary{cursor:pointer;font-weight:600;padding:13px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--ink-2);font-weight:400;font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-bottom:14px;margin:0;color:var(--ink-2)}
+
+footer{color:var(--ink-2);font-size:14px;border-top:1px solid var(--line);padding-top:18px}
+
+@media print{
+  body{background:#fff;color:#000;font-size:11.5pt}
+  .hero{background:#1B3F74!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:28px 0}
+  nav.toc{display:none}
+  section{break-inside:avoid-page}
+  .faq details{break-inside:avoid}
+  .faq details:not([open]) p{display:block}
+  .faq summary::after{display:none}
+  a{text-decoration:none;color:inherit}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Handleiding</div>
+    <div style="display:flex;align-items:center;gap:16px"><svg style="width:56px;height:70px;flex:none" viewBox="20 4 100 128" aria-hidden="true"><g fill="none" stroke="#F4F8FD" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="24" width="76" height="100" rx="6"/><rect x="52" y="24" width="36" height="13"/><rect x="52" y="111" width="36" height="13"/><line x1="32" y1="74" x2="50" y2="74"/><line x1="90" y1="74" x2="108" y2="74"/><circle cx="70" cy="74" r="20"/></g><rect x="62" y="8" width="16" height="10" rx="2" fill="#F4F8FD"/><rect x="66" y="16" width="8" height="8" fill="#F4F8FD"/><path d="M70 54 A20 20 0 0 1 90 74" fill="none" stroke="#5AAEFF" stroke-width="5" stroke-linecap="round"/><line x1="70" y1="74" x2="82" y2="61" stroke="#5AAEFF" stroke-width="6" stroke-linecap="round"/><circle cx="70" cy="74" r="4.5" fill="#5AAEFF"/></svg><h1>Gametracker</h1></div>
+    <p>Volg de score, klok, opstelling, doelpunten en wissels van je jeugdploeg vanaf de zijlijn, op je iPhone. Daarna deel je het verslag in één tik.</p>
+    <div class="meta">Versie oktober 2026</div>
+  </div>
+</header>
+
+<main class="wrap">
+<nav class="toc" aria-label="Inhoud">
+  <strong>Inhoud</strong>
+  <ol>
+    <li><a href="#install">Installeren op je iPhone</a></li>
+    <li><a href="#setup">Een wedstrijd instellen</a></li>
+    <li><a href="#opstelling">Basisopstelling en posities</a></li>
+    <li><a href="#klok">De klok bedienen</a></li>
+    <li><a href="#events">Doelpunten, wissels en andere gebeurtenissen</a></li>
+    <li><a href="#verloop">Het verloop nakijken en corrigeren</a></li>
+    <li><a href="#opstelling-tab">Het tabblad Opstelling</a></li>
+    <li><a href="#verslag">Verslag delen en afdrukken</a></li>
+    <li><a href="#systemen">Spelsystemen en rugnummers</a></li>
+    <li><a href="#faq">Veelgestelde vragen</a></li>
+  </ol>
+</nav>
+
+<section id="install">
+  <h2><span class="n">1</span>Installeren op je iPhone</h2>
+  <p>Gametracker is een webpagina die zich als app gedraagt. Je installeert niets uit de App Store; je zet de pagina op je beginscherm.</p>
+  <ol class="steps">
+    <li><b>Open de link in Safari</b><span>Gebruik de link van je Gametracker-pagina (de github.io-link). Dit moet in Safari, niet in Chrome of een andere browser.</span></li>
+    <li><b>Tik op het deelicoon</b><span>Het vierkantje met de pijl omhoog, onderaan in het midden van Safari.</span></li>
+    <li><b>Kies "Zet op beginscherm"</b><span>Scrol in het menu tot je die optie ziet. Geef de app een naam, bijvoorbeeld Gametracker, en tik op Voeg toe.</span></li>
+    <li><b>Open de app via het icoon</b><span>Ze opent nu op volledig scherm, zonder adresbalk. Gebruik vanaf nu altijd dit icoon.</span></li>
+  </ol>
+  <div class="tip"><strong>Belangrijk om te weten.</strong> Alles wat je invult (spelers, instellingen, de lopende wedstrijd) wordt bewaard in de app zelf op je toestel, niet op een server. Vergrendel je je scherm of sluit je de app, dan loopt de klok gewoon door en is niets verloren. Je gegevens zijn wel gekoppeld aan deze link en dit toestel: op een andere telefoon begin je met een lege spelerslijst.</div>
+</section>
+
+<section id="setup">
+  <h2><span class="n">2</span>Een wedstrijd instellen</h2>
+  <p>Bij het openen zie je het instellingenscherm. Vul het van boven naar beneden in.</p>
+
+  <h3>Ploegen en locatie</h3>
+  <ul>
+    <li><strong>Jouw ploeg</strong> en <strong>Tegenstander</strong>: de namen zoals ze op het scorebord en in het verslag moeten staan.</li>
+    <li><strong>Waar spelen we? Thuis / Uit</strong>: bepaalt de volgorde van de score. Thuis wordt een doelpunt van jullie 1–0; uit wordt het 0–1. Bij een uitwedstrijd staat de tegenstander links op het scorebord.</li>
+    <li><strong>Datum</strong>: staat standaard op vandaag en komt in het verslag.</li>
+  </ul>
+
+  <h3>Wedstrijdformaat</h3>
+  <ul>
+    <li><strong>Spelers op het veld</strong>: 5, 8 of 11, of typ een ander aantal. U6–U9 spelen meestal 5 tegen 5, U10–U13 8 tegen 8, vanaf U14 11 tegen 11.</li>
+    <li><strong>Spelsysteem</strong>: verschijnt afhankelijk van het aantal spelers. Bij 8 tegen 8 is dat de dubbele ruit, bij 11 tegen 11 het 1-4-3-3. Het systeem bepaalt welke rugnummers en posities je kan kiezen en hoe het veld getekend wordt (zie <a href="#systemen">deel 9</a>).</li>
+    <li><strong>Aantal speelperiodes</strong>: 2 helften of 4 kwarten, of een ander aantal.</li>
+    <li><strong>Minuten per periode</strong>: een U10-wedstrijd is bijvoorbeeld 4 × 15 minuten. Onder de keuze staat een samenvatting van het formaat.</li>
+  </ul>
+
+  <h3>Spelerslijst</h3>
+  <p>Typ het rugnummer en de naam en tik op <span class="btn-demo b-nav">Voeg toe</span> (of op Enter). Voeg iedereen toe, ook de wisselspelers. Met het kruisje verwijder je een speler. De spelerslijst blijft bewaard voor volgende wedstrijden.</p>
+  <div class="tip"><strong>Tip.</strong> Geef spelers hun échte rugnummer. Als dat overeenkomt met de nummering van het spelsysteem (1 is keeper, 9 is spits, …) kan de app hun positie automatisch invullen.</div>
+
+  <p>Tik ten slotte op <span class="btn-demo b-nav">Naar de wedstrijd</span>. Die knop wordt pas actief als er genoeg spelers in de lijst staan voor het gekozen formaat.</p>
+</section>
+
+<section id="opstelling">
+  <h2><span class="n">3</span>Basisopstelling en posities</h2>
+  <p>Vóór elk kwart (of elke helft) kies je wie op het veld start. De app vult de keuze vooraf in met wie er op het einde van het vorige kwart stond, dus meestal moet je weinig aanpassen.</p>
+  <ol class="steps">
+    <li><b>Tik spelers aan</b><span>Een blauwe tegel betekent "op het veld". De teller rechtsboven toont hoeveel je er nog moet kiezen, bijvoorbeeld 6 / 8. Te veel gekozen? Dan kleurt de teller rood.</span></li>
+    <li><b>Geef elke speler een positie</b><span>Onder het veld staat een lijst met per speler een keuzemenu: 1 KP – Keeper, 9 SP – Spits, enzovoort. Alleen de posities van het gekozen spelsysteem worden aangeboden.</span></li>
+    <li><b>Of gebruik "Volgens rugnummer"</b><span>Deze knop geeft elke speler meteen de positie die bij zijn rugnummer hoort. Spelers met een nummer dat niet in het systeem zit (bijvoorbeeld 14) laat ze ongemoeid; die vul je zelf in.</span></li>
+    <li><b>Controleer het veld</b><span>De veldweergave toont de opstelling zoals een coach ze tekent: aanval bovenaan, keeper onderaan, links en rechts gezien vanuit het eigen doel.</span></li>
+    <li><b>Start</b><span>Tik op <span class="btn-demo b-nav">Start 1e kwart</span>. Dat kan pas als het juiste aantal spelers gekozen is.</span></li>
+  </ol>
+  <p>Vergeet je iemand een positie te geven, dan verschijnt die onder het veld bij "Zonder positie". Dat is geen probleem; je kan het later nog aanpassen. Spelers toevoegen die nog niet in de lijst staan kan hier ook via <span class="btn-demo b-sec">Spelers beheren</span>.</p>
+</section>
+
+<section id="klok">
+  <h2><span class="n">4</span>De klok bedienen</h2>
+  <p>Het scorebord bovenaan toont het kwart, de klok, de stand en de knoppen voor de klok. Het statuslampje naast de kwartnaam licht op als de klok loopt.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Knop</th><th>Wat gebeurt er</th></tr></thead>
+    <tbody>
+      <tr><td><span class="btn-demo b-chalk">Start 1e kwart</span></td><td>Start de klok en legt de basisopstelling van dat kwart vast in het verloop.</td></tr>
+      <tr><td><span class="btn-demo b-chalk">Pauze</span> / <span class="btn-demo b-chalk">Hervat</span></td><td>Zet de klok stil, bijvoorbeeld bij een blessure, en laat ze daarna verder lopen. Tijdens een pauze kan je nog gewoon doelpunten en wissels noteren.</td></tr>
+      <tr><td><span class="btn-demo b-sec">Einde 1e kwart</span></td><td>Vraagt een bevestiging en sluit het kwart af. De tussenstand komt in het verloop. Daarna verschijnt <span class="btn-demo b-chalk">Naar 2e kwart</span>, waarmee je de opstelling van het volgende kwart kiest.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Rechts van de klok staat de voorziene duur (bijvoorbeeld / 15:00). Is die voorbij, dan verschijnt "Speeltijd voorbij", maar de klok loopt door zodat je ook extra tijd correct registreert. Jij beslist wanneer het kwart eindigt.</p>
+  <p>Na het laatste kwart staat het scorebord op "Afgelopen" en brengt een knop je rechtstreeks naar het verslag.</p>
+</section>
+
+<section id="events">
+  <h2><span class="n">5</span>Doelpunten, wissels en andere gebeurtenissen</h2>
+  <p>Onder het scorebord staan grote knoppen. Ze werken zodra het kwart gestart is (ook tijdens een pauze).</p>
+  <div class="tip"><strong>De tijd staat vast op het moment dat je op de knop drukt.</strong> Doe je er een halve minuut over om de doelpuntenmaker en de assist aan te duiden, dan krijgt het doelpunt toch de tijd van je eerste tik. Je ziet die tijd rechtsboven in het paneel.</div>
+
+  <h3><span class="btn-demo b-us">Doelpunt</span> van jouw ploeg</h3>
+  <ol>
+    <li>Tik de <strong>doelpuntenmaker</strong> aan. Je ziet alleen wie op het veld staat. Scoorde de tegenstander in eigen doel? Kies dan "Eigen doelpunt tegenstander".</li>
+    <li>Tik de speler aan die de <strong>assist</strong> gaf, of kies "Geen assist".</li>
+    <li>Bevestig. Op de knop staat al de nieuwe stand, bijvoorbeeld <span class="btn-demo b-us">Bevestig 2–1</span>.</li>
+  </ol>
+
+  <h3><span class="btn-demo b-them">Doelpunt</span> van de tegenstander</h3>
+  <p>Eén tik en bevestigen. Was het een eigen doelpunt van een van jouw spelers, dan kan je die aanduiden; dat komt dan zo in het verloop.</p>
+
+  <h3><span class="btn-demo b-sec">Wissel</span></h3>
+  <ol>
+    <li>Kies bij <strong>Eruit</strong> de speler die het veld verlaat (alleen spelers op het veld).</li>
+    <li>Kies bij <strong>Erin</strong> de speler die invalt (alleen spelers op de bank).</li>
+    <li>Kies de <strong>positie</strong> van de invaller. Standaard is dat de positie van de speler die eruit gaat, maar je kan een andere kiezen.</li>
+    <li>Tik op <strong>Bevestig wissel</strong>, of op <strong>Bevestig en nog een wissel</strong> als je er meerdere tegelijk doorvoert. Alle wissels in die reeks krijgen dezelfde tijd.</li>
+  </ol>
+
+  <h3>Posities aanpassen zonder wissel</h3>
+  <p>Schuiven er spelers van plaats tijdens het kwart? Ga naar het tabblad Opstelling en tik op <span class="btn-demo b-sec">Posities</span>. Pas de keuzemenu's aan (of gebruik "Volgens rugnummer") en bewaar. Dit komt als "Positiewissel" in het verloop.</p>
+
+  <h3>Andere gebeurtenis noteren</h3>
+  <p>Voor alles wat geen doelpunt of wissel is: gele of rode kaart, blessure, gemiste penalty, mooie kans. Kies een snelle optie of typ zelf een tekst, bijvoorbeeld "Gele kaart Lars".</p>
+</section>
+
+<section id="verloop">
+  <h2><span class="n">6</span>Het verloop nakijken en corrigeren</h2>
+  <p>Het tabblad <strong>Verloop</strong> toont alle gebeurtenissen, de recentste bovenaan. Per regel zie je de tijd binnen het kwart, het kwart en de wedstrijdminuut (bijvoorbeeld K2 · 23'), de omschrijving en bij doelpunten de tussenstand. Een gekleurd bolletje toont het type: blauw voor jouw ploeg, grijs voor de tegenstander, donkerblauw voor wissels.</p>
+  <p>Fout genoteerd? Tik op het kruisje naast de regel en bevestig. De app corrigeert meteen wat erbij hoort: een verwijderd doelpunt wordt van de score afgetrokken (ook in latere tussenstanden), een verwijderde wissel zet de spelers terug op hun plaats.</p>
+  <p>Op het tabblad Wedstrijd zie je onderaan steeds de vier laatste gebeurtenissen.</p>
+</section>
+
+<section id="opstelling-tab">
+  <h2><span class="n">7</span>Het tabblad Opstelling</h2>
+  <p>Hier staat alles over wie waar speelt.</p>
+  <ul>
+    <li><strong>Op het veld</strong>: de huidige opstelling op het veld, met rugnummer, naam en positie. Daaronder de bank.</li>
+    <li><strong>Wissel</strong>, <strong>Posities</strong> en <strong>Spelers</strong>: dezelfde wissel als op het hoofdscherm, posities aanpassen, en spelers beheren.</li>
+    <li><strong>Basisopstelling per periode</strong>: voor elk gespeeld kwart de startopstelling met posities.</li>
+    <li><strong>Speelminuten</strong>: hoeveel minuten elke speler effectief op het veld stond. De teller loopt alleen als de klok loopt, dus pauzes tellen niet mee. Handig om de speeltijd eerlijk te verdelen.</li>
+    <li><strong>Naar instellingen</strong>: terug naar het eerste scherm om ploegnaam, thuis/uit, formaat of de spelerslijst aan te passen. De lopende wedstrijd blijft gewoon bewaard; de knop daar heet dan "Terug naar de wedstrijd".</li>
+  </ul>
+  <h3>Spelers beheren tijdens de wedstrijd</h3>
+  <p>Komt er een speler te laat toe of staat iemand niet in de lijst? Via <span class="btn-demo b-sec">Spelers</span> voeg je op elk moment spelers toe met rugnummer en naam, pas je namen of nummers aan, of verwijder je iemand. Nieuwe spelers komen op de bank; je zet ze op het veld via een wissel of bij de basisopstelling van het volgende kwart.</p>
+</section>
+
+<section id="verslag">
+  <h2><span class="n">8</span>Verslag delen en afdrukken</h2>
+  <p>Het tabblad <strong>Verslag</strong> maakt automatisch een tekstverslag: de eindstand (in de juiste thuis/uit-volgorde), datum en formaat, het volledige verloop met tijden en tussenstanden, de basisopstelling per kwart en de statistieken per speler (goals, assists, speelminuten). Het verslag werkt ook tijdens de wedstrijd; dan staat erbij dat ze nog bezig is.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Knop</th><th>Gebruik</th></tr></thead>
+    <tbody>
+      <tr><td><span class="btn-demo b-nav">Kopieer tekst</span></td><td>Zet het verslag op het klembord. Plak het in WhatsApp, een mail of de clubapp.</td></tr>
+      <tr><td><span class="btn-demo b-sec">Deel via…</span></td><td>Opent het deelmenu van je iPhone, zodat je het rechtstreeks naar een groep of contact stuurt.</td></tr>
+      <tr><td><span class="btn-demo b-sec">Afdrukken / PDF</span></td><td>Opent het printvenster. Op iPhone: knijp het voorbeeld open of tik op het deelicoon in dat venster om een PDF te bewaren of te versturen.</td></tr>
+      <tr><td><span class="btn-demo b-danger">Nieuwe wedstrijd (wis alles)</span></td><td>Wist score, klok en verloop na bevestiging. De spelerslijst, het formaat en de ploegnaam blijven staan voor de volgende wedstrijd.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tip"><strong>Tip.</strong> Kopieer of deel het verslag meteen na de wedstrijd, vóór je op "Nieuwe wedstrijd" tikt. De app bewaart maar één wedstrijd tegelijk.</div>
+</section>
+
+<section id="systemen">
+  <h2><span class="n">9</span>Spelsystemen en rugnummers</h2>
+  <p>De posities volgen de klassieke nummering. Elk spelsysteem gebruikt een deel van die nummers; in de keuzemenu's zie je alleen die van het gekozen systeem.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Nr</th><th>Afk.</th><th>Positie</th><th>8v8</th><th>11v11</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td>KP</td><td>Keeper</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">2</td><td>RVV</td><td>Rechtsachter</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">3</td><td>LVV</td><td>Linksachter</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">4</td><td>CV</td><td>Centrale verdediger</td><td></td><td>●</td></tr>
+      <tr><td class="n">5</td><td>CV</td><td>Centrale verdediger</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">6</td><td>VM</td><td>Verdedigende middenvelder</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">7</td><td>RA</td><td>Rechtsbuiten</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">8</td><td>LM</td><td>Linksmidden</td><td></td><td>●</td></tr>
+      <tr><td class="n">9</td><td>SP</td><td>Spits</td><td>●</td><td>●</td></tr>
+      <tr><td class="n">10</td><td>RM</td><td>Rechtsmidden</td><td></td><td>●</td></tr>
+      <tr><td class="n">11</td><td>LA</td><td>Linksbuiten</td><td>●</td><td>●</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>8 tegen 8: dubbele ruit (1-3-1-3)</h3>
+  <div class="pitch" aria-label="Dubbele ruit">
+    <div class="row"><span class="pl">11 LA<i>11</i></span><span class="pl">9 SP<i>9</i></span><span class="pl">7 RA<i>7</i></span></div>
+    <div class="row"><span class="pl">6 VM<i>6</i></span></div>
+    <div class="row"><span class="pl">3 LVV<i>3</i></span><span class="pl">5 CV<i>5</i></span><span class="pl">2 RVV<i>2</i></span></div>
+    <div class="row"><span class="pl">1 KP<i>1</i></span></div>
+  </div>
+  <p class="pitch-cap">Het gangbare systeem voor U10–U13 in het Belgische jeugdvoetbal.</p>
+
+  <h3>11 tegen 11: 1-4-3-3</h3>
+  <div class="pitch" aria-label="1-4-3-3">
+    <div class="row"><span class="pl">11 LA<i>11</i></span><span class="pl">9 SP<i>9</i></span><span class="pl">7 RA<i>7</i></span></div>
+    <div class="row"><span class="pl">8 LM<i>8</i></span><span class="pl">6 VM<i>6</i></span><span class="pl">10 RM<i>10</i></span></div>
+    <div class="row"><span class="pl">3 LVV<i>3</i></span><span class="pl">5 CV<i>5</i></span><span class="pl">4 CV<i>4</i></span><span class="pl">2 RVV<i>2</i></span></div>
+    <div class="row"><span class="pl">1 KP<i>1</i></span></div>
+  </div>
+  <p>Kies je een ander aantal spelers, dan geldt <strong>Vrije nummering 1 tot 11</strong>: alle nummers zijn beschikbaar en je stelt zelf samen.</p>
+</section>
+
+<section id="faq" class="faq">
+  <h2><span class="n">10</span>Veelgestelde vragen</h2>
+  <details><summary>Mijn scherm vergrendelde tijdens het kwart. Klopt de klok nog?</summary><p>Ja. De app onthoudt wanneer de klok gestart is en rekent de tijd correct bij als je terugkeert, ook voor de speelminuten van de spelers op het veld.</p></details>
+  <details><summary>Ik heb een nieuwe versie van het bestand op GitHub gezet, maar zie ze niet.</summary><p>GitHub heeft 1 tot 3 minuten nodig om de pagina te vernieuwen. Sluit daarna de app op je iPhone volledig (veeg ze weg uit het app-overzicht) en open ze opnieuw. Je gegevens blijven bewaard, zolang de bestandsnaam en dus de link dezelfde blijven.</p></details>
+  <details><summary>Kan ik de score of een speler corrigeren achteraf?</summary><p>Verwijder de foute gebeurtenis in het tabblad Verloop en noteer ze opnieuw. De score en de tussenstanden worden automatisch herrekend. Namen en rugnummers pas je aan via Spelers beheren; dat wordt overal mee aangepast.</p></details>
+  <details><summary>Werkt dit ook op Android of op een laptop?</summary><p>Ja, in elke moderne browser. Op Android kies je in Chrome "Toevoegen aan startscherm". De gegevens blijven telkens op het toestel waar je ze invult.</p></details>
+  <details><summary>Kan ik meerdere ploegen bijhouden?</summary><p>De app bewaart één spelerslijst en één wedstrijd. Voor een tweede ploeg kan je dezelfde pagina onder een andere bestandsnaam op GitHub zetten (bijvoorbeeld gametracker-u12.html) en die apart op je beginscherm plaatsen; elke link heeft zijn eigen gegevens.</p></details>
+  <details><summary>Bij 8 tegen 8 vind ik positie 4, 8 of 10 niet.</summary><p>Dat klopt: de dubbele ruit gebruikt die nummers niet. Wil je ze toch, kies dan in de instellingen een ander aantal spelers of het systeem "Vrije nummering".</p></details>
+  <details><summary>Wat gebeurt er als ik "Nieuwe wedstrijd" tik?</summary><p>Score, klok, verloop en speelminuten worden gewist na een bevestiging. Spelers, formaat, spelsysteem en de naam van je ploeg blijven. De tegenstander en de datum vul je opnieuw in.</p></details>
+</section>
+
+<footer>
+  Gametracker bewaart geen gegevens online en gebruikt geen account. Alles staat lokaal in de browser van het toestel waarop je de app gebruikt.
+</footer>
+</main>
+</body>
+</html>
